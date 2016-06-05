@@ -13,7 +13,7 @@ import babelify from 'babelify';
 import collapse from 'bundle-collapser/plugin';
 
 import del from 'del';
-const debug = true;
+const debug = false;
 const src = {
 	image : './image/*',
 	view : './src/view/*.pug',
@@ -53,8 +53,11 @@ gulp.task('lib', () => browserify({
 	.transform(babelify, {
 		sourceMaps: debug,
 		sourceMapsAbsolute: false,
-		presets: ["es2015", "angular2" ], 
-		plugins: ["transform-object-assign"],
+		presets : ["es2015", "angular2" ], 
+		plugins : ["transform-object-assign"],
+		comments : debug,
+		compact : debug,
+		minified : !debug
 	})
 	.plugin(collapse)
 	.transform({
@@ -72,14 +75,17 @@ gulp.task('launcher', () => browserify({
 	.transform(babelify, {
 		sourceMaps: debug,
 		sourceMapsAbsolute: false,
-		presets: ["es2015", "angular2" ], 
-		plugins: ["transform-object-assign"],
+		presets : ["es2015", "angular2" ], 
+		plugins : ["transform-object-assign"],
+		comments : debug,
+		compact : debug,
+		minified : !debug
 	})
-	.plugin(collapse)
 	.transform({
 		sourcemap: debug,
 		global : true
 	}, 'uglifyify')
+	.plugin(collapse)
 	.bundle()
 	.pipe(source('app.js'))
 	.pipe(gulp.dest(rootPath)));

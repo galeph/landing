@@ -104,7 +104,7 @@ export class share {
 	@Input() text;
 
 	system = {};
-	url = 'http://live.galeph.com/';
+	url =  window.env.SHARE;
 	more = '';
 	count = 0;
 

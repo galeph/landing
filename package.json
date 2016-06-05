@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prestart" : "gulp clean",
-    "start" : "gulp watch & static-server dist -i index.html"
+    "start" : "gulp watch & static-server dist -i index.html",
+    "build" : "gulp"
   },
   "author": "AlejoNext <alejonext@gmail.com> (http://alejonext.co/)",
   "license": "MIT",
