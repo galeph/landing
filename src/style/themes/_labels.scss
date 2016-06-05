@@ -1,0 +1,38 @@
+.#{$label-class-name} {
+    color: $white;
+    font-weight: 300;
+    font-size: $label-font-size;
+    @include border-radius($border-radius);
+
+    &.#{$white-color-class-name} {
+        background: $white;
+        color: $text-color;
+    }
+    &.#{$black-color-class-name} {
+        background: $black;
+    }
+    &.#{$orange-color-class-name} {
+        background: $orange;
+    }
+    &.#{$red-color-class-name} {
+        background: $red;
+    }
+    &.#{$green-color-class-name} {
+        background: $green;
+    }
+    &.#{$blue-color-class-name} {
+        background: $blue;
+    }
+    &.#{$yellow-color-class-name} {
+        background: $yellow;
+        color: $text-color;
+    }
+    &.#{$grey-color-class-name} {
+        background: $grey-50;
+    }
+
+    & + .#{$label-class-name} {
+        margin-left: .2em;
+    }
+
+}

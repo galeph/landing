@@ -1,0 +1,23 @@
+// INK:NAVIGATION:BREADCRUMBS
+.#{$navigation-class-name} {
+
+    ul {
+
+        &.breadcrumbs {
+            font-weight: $navigation-font-weight;
+            @include border-radius($navigation-border-radius);
+            
+            // defines default theme
+            @include nav-breadcrumbs();
+
+            // defines custom themes
+            &.#{$white-color-class-name}     { @include nav-breadcrumbs($white); }
+            &.#{$grey-color-class-name}      { @include nav-breadcrumbs($grey-15); }
+            &.#{$black-color-class-name}     { @include nav-breadcrumbs($grey-90); }
+            &.#{$blue-color-class-name}      { @include nav-breadcrumbs($blue); }
+            &.#{$orange-color-class-name}    { @include nav-breadcrumbs($orange); }
+            &.#{$green-color-class-name}     { @include nav-breadcrumbs($green); }
+            &.#{$red-color-class-name}       { @include nav-breadcrumbs($red); }
+        }
+    }
+}

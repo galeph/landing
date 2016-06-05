@@ -1,0 +1,16 @@
+ul.unstyled.list.medium-100.small-100.tiny-100.large-90.xlarge-70( class=[ 'push-' + name.centerPosition ] )
+	li( *ngFor="let concert of (live.events | search:query)", class=[ name.columnGroup, name.half + '-padding', 'medium-' + name.half + '-space', 'large-' + name.half + '-space', 'xlarge-' + name.half + '-space'  ] )
+		div.small-20.tiny-20( class=[  name.all + '-10',
+		'align-' + name.centerPosition  ] )
+			h3( class=[  name.no + '-margin' ] ) {{concert.start | time:'D'}}
+			p( class=[  name.no + '-margin' ] ) {{concert.start | time:'MMMM'}}
+		div.small-80.tiny-80( class=[ name.all + '-65',
+		name.half + '-left-padding' ] )
+			h2( class=[  name.no + '-margin' ] ) {{concert.summary}}
+				p.small( class=[  name.no + '-margin' ] ) {{concert.location}}
+		div.show-large.show-xlarge.show-medium( class=[ name.all + '-25', 'hide-' + name.all ] )
+			div( class=[ name.button + '-group' ] )
+				share(is="twitter", text='{{concert.summary}} en {{concert.location}}', via='galeph', class=[ name.button ])
+				share(is="facebook", text='{{concert.summary}} en {{concert.location}}', via='galeph', class=[ name.button ])
+				share(is="google", text='{{concert.summary}} en {{concert.location}}', via='galeph', class=[ name.button ])
+				share(is="email", text='{{concert.summary}} en {{concert.location}}', via='galeph', class=[ name.button ])

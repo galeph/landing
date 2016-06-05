@@ -1,0 +1,134 @@
+.#{$tooltip-class-name} {
+
+    display: inline-block;
+    position: relative;
+
+    & > .content {
+        background: $tooltip-background-color;
+        padding: $tooltip-padding;
+        @include border-radius ($tooltip-border-radius);
+        font-size: $tooltip-font-size;
+        color: $tooltip-text-color;
+    }
+
+    & > .arrow {
+
+        position: absolute;
+
+        &.#{$up-position-class-name}, &.#{$down-position-class-name}, &.#{$left-position-class-name}, &.#{$right-position-class-name} {
+            width: 0; 
+            height: 0;
+        }
+
+        &.#{$up-position-class-name} {           
+            border-left: $tooltip-arrow-size solid transparent;
+            border-right: $tooltip-arrow-size solid transparent;
+            border-bottom: $tooltip-arrow-size solid $tooltip-background-color;
+            top: -$tooltip-arrow-size;
+            left: 50%;
+            margin-left: -($tooltip-arrow-size / 2);
+        }
+
+        &.#{$down-position-class-name} {             
+            border-left: $tooltip-arrow-size solid transparent;
+            border-right: $tooltip-arrow-size solid transparent;
+            border-top: $tooltip-arrow-size solid $tooltip-background-color;
+            bottom: -($tooltip-arrow-size/1.1);
+            left: 50%;
+            margin-left: -($tooltip-arrow-size / 2);
+        }
+
+        &.#{$right-position-class-name} {            
+            border-top: $tooltip-arrow-size solid transparent;
+            border-bottom: $tooltip-arrow-size solid transparent;
+            border-left: $tooltip-arrow-size solid $tooltip-background-color;
+            top: 50%;
+            right: -($tooltip-arrow-size/1.1);
+            margin-top: -($tooltip-arrow-size);
+        }
+
+        &.#{$left-position-class-name} {             
+            border-top: $tooltip-arrow-size solid transparent;
+            border-bottom: $tooltip-arrow-size solid transparent; 
+            border-right:$tooltip-arrow-size solid $tooltip-background-color; 
+            top: 50%;
+            left: -($tooltip-arrow-size/1.1);
+            margin-top: -($tooltip-arrow-size);
+        }
+    }
+    
+    &.#{$blue-color-class-name} { 
+        & > .content { 
+            background: $blue;
+            color: $white;
+        }
+        & > .arrow {
+            &.#{$up-position-class-name} { border-bottom-color: $blue; }
+            &.#{$down-position-class-name} { border-top-color: $blue; }
+            &.#{$left-position-class-name} { border-right-color: $blue; }
+            &.#{$right-position-class-name} { border-left-color: $blue; }
+        }
+    }
+    &.#{$red-color-class-name} { 
+        & > .content { 
+            background: $red;
+            color: $white;
+        }
+        & > .arrow {
+            &.#{$up-position-class-name} { border-bottom-color: $red; }
+            &.#{$down-position-class-name} { border-top-color: $red; }
+            &.#{$left-position-class-name} { border-right-color: $red; }
+            &.#{$right-position-class-name} { border-left-color: $red; }
+        }
+    }
+    &.#{$orange-color-class-name} { 
+        & > .content { 
+            background: $orange;
+            color: $white;
+        }
+        & > .arrow {
+            &.#{$up-position-class-name} { border-bottom-color: $orange; }
+            &.#{$down-position-class-name} { border-top-color: $orange; }
+            &.#{$left-position-class-name} { border-right-color: $orange; }
+            &.#{$right-position-class-name} { border-left-color: $orange; }
+        }
+    }
+    &.#{$green-color-class-name} { 
+        & > .content { 
+            background: $green;
+            color: $white;
+        }
+        & > .arrow {
+            &.#{$up-position-class-name} { border-bottom-color: $green; }
+            &.#{$down-position-class-name} { border-top-color: $green; }
+            &.#{$left-position-class-name} { border-right-color: $green; }
+            &.#{$right-position-class-name} { border-left-color: $green; }
+        }
+    }
+    &.#{$black-color-class-name} { 
+        & > .content { 
+            background: $black;
+            color: $white;
+        }
+        & > .arrow {
+            &.#{$up-position-class-name} { border-bottom-color: $black; }
+            &.#{$down-position-class-name} { border-top-color: $black; }
+            &.#{$left-position-class-name} { border-right-color: $black; }
+            &.#{$right-position-class-name} { border-left-color: $black; }
+        }
+    }
+
+    &.#{$grey-color-class-name} { 
+        & > .content { 
+            background: $grey-20;
+            color: $grey-80;
+        }
+        & > .arrow {
+            &.#{$up-position-class-name} { border-bottom-color: $grey-20; }
+            &.#{$down-position-class-name} { border-top-color: $grey-20; }
+            &.#{$left-position-class-name} { border-right-color: $grey-20; }
+            &.#{$right-position-class-name} { border-left-color: $grey-20; }
+        }
+    }
+
+}

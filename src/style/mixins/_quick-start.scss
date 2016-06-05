@@ -1,0 +1,114 @@
+@mixin generate-quick-start ($breakpoints) {
+	$circule : $border-radius * 9;
+	$color-back : tint(shade($orange,5%), 50%);
+	$color-bac1 : rgba(255,255,225,0);
+	$color-bac2 : rgba(220, 220, 220, 0.8);
+	$color-bac3 : rgba(220, 220, 220, 0.4);
+
+	@each $breakpoint in $breakpoints {
+
+		$media:             nth($breakpoint,1);
+		$class-name:        nth($breakpoint,2);
+		$minimum-width:     nth($breakpoint,3);
+		$maximum-width:     nth($breakpoint,4);
+		$gutter-width:      nth($breakpoint,5);
+		$base-font-size:    nth($breakpoint,6);
+		$no-media-query:    nth($breakpoint,7);
+
+		@if $minimum-width and not $maximum-width {
+			/* for #{$class-name} screens */
+			@media #{$media} and (min-width: $minimum-width) {
+				.logo{
+					height : 12em;
+				}
+				
+				/* your css for #{$class-name} screens goes here ... */
+				.ticket {
+					transform : rotate(-3deg);
+					background-color: transparent;
+					background-size: 50% 100%;
+					background-repeat: no-repeat;
+					background-position: top left, top right;
+					background-image: 
+						-webkit-radial-gradient(circle at -10% 50%, $color-bac1 $circule, $color-back ($circule - $border-radius)),
+						-webkit-radial-gradient(circle at 110% 50%, $color-bac1 $circule, $color-back ($circule - $border-radius));
+					background-image: 
+						-webkit-radial-gradient(-10% 50% circle, $color-bac1 $circule, $color-back ($circule - $border-radius)), 
+						-webkit-radial-gradient(110% 50% circle, $color-bac1 $circule, $color-back ($circule - $border-radius));
+					background-image: 
+						radial-gradient(circle at -10% 50%, $color-bac1 $circule, $color-back ($circule - $border-radius)), 
+						radial-gradient(circle at 110% 50%, $color-bac1 $circule, $color-back ($circule - $border-radius));
+					.#{$form-class-name} {
+						border-left: $black dotted 0.2em ;
+					}
+				}
+				input.gray{
+					background: $color-bac3;
+					border-color: $color-bac3;
+				}
+			}
+		}
+
+		@if $minimum-width and $maximum-width {
+			/* for #{$class-name} screens */
+			@media #{$media} and (min-width: $minimum-width) and (max-width: $maximum-width) {
+				
+				/* your css for #{$class-name} screens goes here ... */
+				@if $minimum-width > 630 {
+					.ticket {
+						transform : rotate(-3deg);
+						background-color: transparent;
+						background-size: 50% 100%;
+						background-repeat: no-repeat;
+						background-position: top left, top right;
+						background-image: 
+							-webkit-radial-gradient(circle at -10% 50%, $color-bac1 $circule, $color-back ($circule - $border-radius)),
+							-webkit-radial-gradient(circle at 110% 50%, $color-bac1 $circule, $color-back ($circule - $border-radius));
+						background-image: 
+							-webkit-radial-gradient(-10% 50% circle, $color-bac1 $circule, $color-back ($circule - $border-radius)), 
+							-webkit-radial-gradient(110% 50% circle, $color-bac1 $circule, $color-back ($circule - $border-radius));
+						background-image: 
+							radial-gradient(circle at -10% 50%, $color-bac1 $circule, $color-back ($circule - $border-radius)), 
+							radial-gradient(circle at 110% 50%, $color-bac1 $circule, $color-back ($circule - $border-radius));
+						.#{$form-class-name} {
+							border-left: $black dotted 0.2em ;
+						}
+					}
+					.logo{
+						height : 12em;
+					}
+					input.gray{
+						background: $color-bac3;
+						border-color: $color-bac3;
+					}
+				}
+
+				@if $minimum-width <= 630 {
+					.ticket {
+						input.gray{
+							background: $color-bac2;
+							border-color: $color-bac2;
+						}
+					}
+					
+				}
+
+
+			}
+		}
+
+		@if not $minimum-width and $maximum-width {
+			/* for #{$class-name} screens */
+			@media #{$media} and (max-width: $maximum-width) {
+				/* your css for #{$class-name} screens goes here ... */
+				.ticket {
+					input.gray{
+						background: $color-bac2;
+						border-color: $color-bac2;
+					}
+				}
+
+			}
+		}
+	}
+}

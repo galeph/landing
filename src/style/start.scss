@@ -1,0 +1,77 @@
+/**
+ * Ink
+ *
+ * A set of tools for quick development of web interfaces.
+ *
+ * @package   Ink
+ * @author    Sapo Ink Team
+ * @license   http://opensource.org/licenses/MIT MIT
+ * @link      http://ink.sapo.pt
+ * @version   3.1.10
+ */
+
+// Import Compass Core
+@import "contrib/compass/css3";
+@import "contrib/compass/utilities";
+// IMPORT CONFIG FILES (THESE CONTAIN VARIABLE DEFINITIONS)
+@import "config/common";
+@import "config/typography";
+@import "config/colors";
+@import "config/alerts";
+@import "config/buttons";
+@import "config/classnames";
+@import "config/forms";
+@import "config/grid";
+@import "config/labels";
+@import "config/badges";
+@import "config/navigation";
+@import "config/tables";
+@import "config/images";
+@import "config/js";
+
+// IMPORT CONFIG FILES (THESE CONTAIN VARIABLE DEFINITIONS)
+@import "mixins/quick-start";
+
+html {
+	background-color : $black;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: url('image/conciert.png');
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+.loading {
+	bottom: 0px;
+	position: fixed;
+	width: 100%;
+	top: 44%;
+	i {
+		color : $grey-10;
+		font-size: $border-radius * 7;
+	}
+}
+
+.ticket {
+	border-radius: $border-radius;	
+	input.gray{
+		background: rgba(200, 200, 200, 0.4);
+		border-color: rgba(200, 200, 200, 0.4);
+	}
+}
+
+ul.list {
+	li {
+		border-radius: $border-radius;
+		background-color: $white;
+		color : $black;
+		.#{$all}-65 {
+			border-left: $black dotted 0.2em ;
+		}
+	}
+}
+
+@include generate-quick-start($grid-breakpoints);
