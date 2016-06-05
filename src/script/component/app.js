@@ -1,7 +1,3 @@
-window.env.SUSCRIBE = 'http://foobar..';
-window.env.CAL = 'http://foobar..';
-window.env.SHARE = 'http://foobar..';
-
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, COMMON_PIPES} from '@angular/common';
 import {Component} from '@angular/core';
 import {HTTP_PROVIDERS, Http} from '@angular/http';
