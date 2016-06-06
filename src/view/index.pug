@@ -35,13 +35,13 @@ html( lang='es' )
 		link( rel="shortcut icon" href="https://cdn.galeph.com/ico/64u3cd.66617669636f6e2d323478.ico?v=2.9.33" type="image/x-icon" size="16x16 24x24 32x32 64x64")
 
 		<!--[if lt IE 9]>
-			link( rel="stylesheet" type="text/css" href="./ie.css" charset="utf-8")
+			link( rel="stylesheet" type="text/css" href= uri + "ie.css" charset="utf-8")
 		<![endif]-->
 
 		title Conciertos
 
-		script( src='./lib.js' )
-		script( src='./app.js' )
+		script( src=uri + 'lib.js' )
+		script( src=uri + 'app.js' )
 
 	body( class=[ name.master ] )
 		.loading( class=[ 'align-' + name.centerPosition ] )
