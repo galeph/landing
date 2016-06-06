@@ -95,7 +95,7 @@ gulp.task('style', () => gulp.src(src.style)
 			includePaths: [
 				'./src/style/contrib/'
 			],
-			outputStyle: debug ? 'nested' : 'compressed',
+			outputStyle: debug ? 'nested' : 'compact',
 			sourceComments : debug
 		}).on('error', sass.logError))
 		.pipe(gulp.dest(rootPath)));

@@ -16,13 +16,11 @@
 		$no-media-query:    nth($breakpoint,7);
 
 		@if $minimum-width and not $maximum-width {
-			/* for #{$class-name} screens */
 			@media #{$media} and (min-width: $minimum-width) {
 				.logo{
 					height : 12em;
 				}
 				
-				/* your css for #{$class-name} screens goes here ... */
 				.ticket {
 					transform : rotate(-3deg);
 					background-color: transparent;
@@ -50,7 +48,6 @@
 		}
 
 		@if $minimum-width and $maximum-width {
-			/* for #{$class-name} screens */
 			@media #{$media} and (min-width: $minimum-width) and (max-width: $maximum-width) {
 				
 				/* your css for #{$class-name} screens goes here ... */
@@ -98,7 +95,6 @@
 		}
 
 		@if not $minimum-width and $maximum-width {
-			/* for #{$class-name} screens */
 			@media #{$media} and (max-width: $maximum-width) {
 				/* your css for #{$class-name} screens goes here ... */
 				.ticket {
