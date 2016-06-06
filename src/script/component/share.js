@@ -9,7 +9,7 @@ import {HTTP_PROVIDERS, Http} from '@angular/http';
 @Component({
 	selector: 'share',
 	viewProviders: [HTTP_PROVIDERS],
-	templateUrl: './share.html',
+	templateUrl: window.env.SHARE + 'share.html',
 	directives: [ CORE_DIRECTIVES ],
 	pipes : [ COMMON_PIPES ]
 })

@@ -8,7 +8,7 @@ import {share} from './share';
 	selector: 'body',
 	viewProviders: [HTTP_PROVIDERS],
 	directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, list],
-	templateUrl: './home.html',
+	templateUrl: window.env.SHARE + 'home.html',
 	pipes : [ COMMON_PIPES ]
 })
 export class app {

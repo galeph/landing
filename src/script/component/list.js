@@ -10,7 +10,7 @@ import {time} from '../pipe/time';
 	selector: 'list',
 	providers: [ lives ],
 	directives: [share, CORE_DIRECTIVES],
-	templateUrl:  './list.html',
+	templateUrl: window.env.SHARE + './list.html',
 	pipes : [ search, time, COMMON_PIPES ]
 })
 export class list implements OnInit {

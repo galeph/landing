@@ -39,6 +39,7 @@ gulp.task('view', () => {
 		.pipe(pug({
 			locals: {
 				name : isClass,
+				uri : 'http://inlive.galeph.com/',
 			}
 		}))
 		.pipe(gulp.dest(rootPath));
