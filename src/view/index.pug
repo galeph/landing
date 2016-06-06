@@ -21,17 +21,17 @@ html( lang='es' )
 		meta( property="og:type",			content="website")
 		meta( name='twitter:card',			content='summary' )
 		meta( name='twitter:site', 			content='@gale_ph' )
-		meta( name='twitter:image',			property="og:image", 		content='./image/tuiter.png' )
+		meta( name='twitter:image',			property="og:image", 		content= uri + 'image/tuiter.png' )
 		link( property="org:blogPosts",     href="https://wall.galeph.com/" rel="blog")
-		link( rel="prefetch" href="./image/web.png")
+		link( rel="prefetch" href= uri +"image/web.png")
 
 		link( href="https://plus.google.com/112330520573707428234" rel="publisher")
 		link( href="http://facebook.com/Galeph" rel="publisher")
 		link( href="http://twitter.com/gale_ph" rel="publisher")
-		link( rel='stylesheet', type='text/css', href='./ink.css')
-		link( rel='stylesheet', type='text/css', href='./start.css')
+		link( rel='stylesheet', type='text/css', href= uri +'ink.css')
+		link( rel='stylesheet', type='text/css', href= uri + 'start.css')
 
-		link( rel="shortcut icon" href="image/favicon.ico")
+		link( rel="shortcut icon" href= uri + "image/favicon.ico")
 		link( rel="shortcut icon" href="https://cdn.galeph.com/ico/64u3cd.66617669636f6e2d323478.ico?v=2.9.33" type="image/x-icon" size="16x16 24x24 32x32 64x64")
 
 		<!--[if lt IE 9]>
