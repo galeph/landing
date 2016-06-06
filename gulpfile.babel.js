@@ -1,6 +1,5 @@
 import gulp from 'gulp';
 import source from 'vinyl-source-stream';
-import buffer from 'vinyl-buffer';
 import scssToJson from 'scss-to-json';
 import pug from 'gulp-pug';
 import sass from 'gulp-sass';
@@ -8,7 +7,6 @@ import str from 'underscore.string';
 import gulpCopy from'gulp-copy';
 
 import browserify from 'browserify';
-import watchify from 'watchify';
 import babelify from 'babelify';
 import collapse from 'bundle-collapser/plugin';
 
@@ -48,7 +46,8 @@ gulp.task('view', () => {
 
 gulp.task('lib', () => browserify({
 		entries: src.lib,
-		debug
+		debug,
+		insertGlobals : false
 	})
 	.transform(babelify, {
 		sourceMaps: debug,
@@ -70,7 +69,8 @@ gulp.task('lib', () => browserify({
 
 gulp.task('launcher', () => browserify({
 		entries: src.launcher,
-		debug
+		debug,
+		insertGlobals : false
 	})
 	.transform(babelify, {
 		sourceMaps: debug,

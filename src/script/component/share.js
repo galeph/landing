@@ -98,7 +98,6 @@ export class share {
 	static MULTI = 1000;
 	static DEC = 100;
 	
-
 	@Input() is;
 	@Input() via;
 	@Input() text;

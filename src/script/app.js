@@ -3,6 +3,7 @@ import {bootstrap} from '@angular/platform-browser-dynamic';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {HTTP_PROVIDERS, Http, BaseRequestOptions, XHRBackend} from '@angular/http';
 import {app} from './component/app';
+
 enableProdMode();
 bootstrap(app, [
 	HTTP_PROVIDERS,
