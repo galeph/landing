@@ -13,7 +13,7 @@ import {Pipe, PipeTransform, Injectable} from '@angular/core';
 	pure: false
 })
 @Injectable()
-export class time implements PipeTransform {
+export class time {
 	transform(date, args) {
 		return	moment(date).format(args);
 	}

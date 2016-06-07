@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform, Injectable} from '@angular/core';
+import {Pipe, Injectable} from '@angular/core';
 
 /**
  *
@@ -13,7 +13,7 @@ import {Pipe, PipeTransform, Injectable} from '@angular/core';
 	pure: false
 })
 @Injectable()
-export class search implements PipeTransform {
+export class search {
 	static time (a, b){
 		return Math.sign(moment(a.start).diff(moment(b.start)));
 	}

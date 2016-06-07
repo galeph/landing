@@ -13,7 +13,7 @@ import {time} from '../pipe/time';
 	templateUrl: window.env.SHARE + './list.html',
 	pipes : [ search, time, COMMON_PIPES ]
 })
-export class list implements OnInit {
+export class list {
 	@Input() query;
 
 	constructor(l: lives) {

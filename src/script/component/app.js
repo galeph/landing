@@ -3,15 +3,17 @@ import {Component} from '@angular/core';
 import {HTTP_PROVIDERS, Http} from '@angular/http';
 import {list} from './list';
 import {share} from './share';
+import {parse} from 'query-string';
 
 @Component({
 	selector: 'body',
-	viewProviders: [HTTP_PROVIDERS],
+	providers: [HTTP_PROVIDERS],
 	directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, list],
 	templateUrl: window.env.SHARE + 'home.html',
 	pipes : [ COMMON_PIPES ]
 })
 export class app {
+	query = {};
 	suscriber = {
 		mail : '',
 		error : null,
@@ -20,12 +22,18 @@ export class app {
 	}
 
 	constructor( http: Http) {
+		let query = parse(window.location.search);
+		for (let i in query) {
+			if(/band|city|type|place/i.test(i) ){
+				this.suscriber.search = query[i];
+			}
+		}
+
 		this.http = http;
 		this.http._defaultOptions.url = window.env.SUSCRIBE;
 	}
 
 	suscribe(){
-		console.log(Http)
 		if(this.suscriber.mail){
 			this.suscriber.error = null
 			this.http
