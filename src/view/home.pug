@@ -12,7 +12,7 @@ div.medium-100.small-100.tiny-100.large-90.xlarge-70( class=[ name.double + '-to
 			.large( class=[ name.control + '-group', name.no + '-margin' ] )
 				label(for="mail", class=[ 'hide-' + name.all ]) Email
 				.append-button( class=[ name.control ] )
-					span: input#mail.gray( type="email", [(ngModel)]="suscriber.email", name="mail", placeholder="Tu email" )
+					span: input#mail.gray( type="email", [(ngModel)]="suscriber.mail", name="mail", placeholder="Tu mail" )
 					button.monospace.medium( (click)="suscribe()" class=[ name.button, name.blackColor ] ) Suscribte
 				p.monospace.tip: span.small Suscribte para avisarte de  los conciertos
 

@@ -11,7 +11,7 @@ import babelify from 'babelify';
 import collapse from 'bundle-collapser/plugin';
 
 import del from 'del';
-const debug = false;
+const debug = true;
 const src = {
 	image : './image/*',
 	view : './src/view/*.pug',
@@ -39,7 +39,7 @@ gulp.task('view', () => {
 		.pipe(pug({
 			locals: {
 				name : isClass,
-				uri : 'http://inlive.galeph.com/',
+				uri : "http://localhost:9080/",
 			}
 		}))
 		.pipe(gulp.dest(rootPath));

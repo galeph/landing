@@ -13,28 +13,33 @@ import {share} from './share';
 })
 export class app {
 	suscriber = {
-		email : '',
+		mail : '',
 		error : null,
 		search : '',
 		send : false
 	}
 
-	constructor(http: Http) {
+	constructor( http: Http) {
 		this.http = http;
+		this.http._defaultOptions.url = window.env.SUSCRIBE;
 	}
 
 	suscribe(){
-		this.suscriber.error = null;
-		this.http
-			.post(window.env.SUSCRIBE, this.suscriber)
-			.map(res => res.json())
-			.subscribe(res => {
-			if(res.error){
-				this.suscriber.error = res.error;
-			} else {
-				this.suscriber.email = '';
-				this.suscriber.send = true;
-			}
-		});
+		console.log(Http)
+		if(this.suscriber.mail){
+			this.suscriber.error = null
+			this.http
+				.post(window.env.SUSCRIBE, JSON.stringify(this.suscriber) )
+				.subscribe(res => {
+					let rt = res.json();
+					if(rt.error){
+						this.suscriber.error = rt.error;
+					} else {
+						this.suscriber.mail = '';
+						this.suscriber.send = true;
+					}
+				});	
+		}
+		
 	}
 }
