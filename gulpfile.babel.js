@@ -11,7 +11,7 @@ import babelify from 'babelify';
 import collapse from 'bundle-collapser/plugin';
 
 import del from 'del';
-const debug = true;
+const debug = false;
 const src = {
 	image : './image/*',
 	view : './src/view/*.pug',
