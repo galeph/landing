@@ -1,4 +1,4 @@
-html { background-color: #000; background-size: cover; background-repeat: no-repeat; background-image: url("http://localhost:9080/image/conciert.png"); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-position: center; background-attachment: fixed; }
+html { background-color: #000; background-size: cover; background-repeat: no-repeat; background-image: url("http://inlive.galeph.com/image/conciert.png"); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-position: center; background-attachment: fixed; }
 
 .loading { bottom: 0px; position: fixed; width: 100%; top: 44%; }
 
