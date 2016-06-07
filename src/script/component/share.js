@@ -1,6 +1,7 @@
 import {CORE_DIRECTIVES, COMMON_PIPES} from '@angular/common';
 import {Component,  Input, Attribute} from '@angular/core';
 import {HTTP_PROVIDERS, Http} from '@angular/http';
+import {parse, stringify} from 'query-string';
 
 /**
  *  "Unexpected directive value 'undefined' on the View of component 'app'"
@@ -101,20 +102,21 @@ export class share {
 	@Input() is;
 	@Input() via;
 	@Input() text;
+	@Input() query;
 
 	system = {};
-	url =  window.env.SHARE;
-	more = '';
-	count = 0;
+	maker = {};
 
 	ngOnInit(@Attribute('height') height, @Attribute('width') width, @Attribute('name') name ){
 		this.name = name || 'Share';
 		this.system = share[this.is];
 		this.setting = this.windows(width, height);
+		this.maker = parse(window.location.search);
 	}
 
 	post(){
-		var href = this.system.share(this.url, encodeURI(this.text), this.via);
+		this.maker.type = this.query;
+		var href = this.system.share(window.env.SHARE + '?' + stringify(this.maker), encodeURI(this.text), this.via);
 		var neww = window.open(href, this.name, this.setting);
 		if (window.focus) neww.focus();
 	}

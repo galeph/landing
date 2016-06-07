@@ -7,5 +7,5 @@ window.moment = moment;
 window.env =  {
 	SUSCRIBE:"https://foo...",
 	CAL:"https://foo...",
-	SHARE:"http://localhost:9080/"
+	SHARE: 'http://localhost:9080/'
 };
