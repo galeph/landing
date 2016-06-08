@@ -1,16 +1,17 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
-import config  from '../lib.js';
+import {CAL} from '../settings';
 
 @Injectable()
 export class lives {
-	events = [];
+	http: any;
+	events: any[];
 	constructor( http: Http) {
 		this.http = http;
-		this.http._defaultOptions.url = config.CAL;
+		this.http._defaultOptions.url = CAL;
 	}
 
-	getAll(): Promise {
+	getAll() {
 		return this.http.get().subscribe(res => this.events = res.json().event);
 	}
 

@@ -1,7 +1,7 @@
 import {CORE_DIRECTIVES, COMMON_PIPES} from '@angular/common';
 import {Component,  Input, Attribute} from '@angular/core';
 import {HTTP_PROVIDERS, Http} from '@angular/http';
-import config  from '../lib.js';
+import {SHARE} from '../settings';
 
 /**
  *  "Unexpected directive value 'undefined' on the View of component 'app'"
@@ -10,7 +10,7 @@ import config  from '../lib.js';
 @Component({
 	selector: 'share',
 	viewProviders: [HTTP_PROVIDERS],
-	templateUrl: config.SHARE + 'share.html',
+	templateUrl: SHARE + 'share.html',
 	directives: [ CORE_DIRECTIVES ],
 	pipes : [ COMMON_PIPES ]
 })
@@ -19,7 +19,7 @@ export class share {
 	static facebook = {
 		icon : 'facebook',
 		share (absUrl) {
-			return 'http://www.facebook.com/sharer.php?u=' + encodeURIComponent(absUrl);
+			return 'http://www.facebook.com/sharer.php?u=' + absUrl;
 		},
 		count (absUrl) {
 			return 'https://graph.facebook.com/?callback=JSON_CALLBACK&id='+ absUrl;
@@ -31,7 +31,7 @@ export class share {
 	static twitter = {
 		icon : 'twitter',
 		share (absUrl, text, via) {
-			return 'http://twitter.com/share?text=' + text + ' ' + encodeURIComponent(absUrl) + '&via=' + via;
+			return 'http://twitter.com/share?text=' + text + '&url=' + absUrl + '&via=' + via;
 		},
 		count (absUrl) {
 			return 'https://cdn.api.twitter.com/1/urls/count.json?callback=JSON_CALLBACK&url='+ absUrl;
@@ -43,7 +43,7 @@ export class share {
 	static google = {
 		icon : 'google-plus',
 		share(absUrl) {
-			return 'https://plus.google.com/share?url='+ encodeURIComponent(absUrl);
+			return 'https://plus.google.com/share?url='+ absUrl;
 		}
 	};
 	static tumblr = {
@@ -55,13 +55,13 @@ export class share {
 	static reddit = {
 		icon : 'reddit-alien',
 		share (absUrl) {
-			return 'https://www.reddit.com/submit?url=' + encodeURIComponent(absUrl);
+			return 'https://www.reddit.com/submit?url=' + absUrl;
 		}
 	};
 	static linkedin = {
 		icon : 'linkedin',
 		share (absUrl) {
-			return 'https://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(absUrl);
+			return 'https://www.linkedin.com/shareArticle?mini=true&url=' + absUrl;
 		},
 		count (absUrl) {
 			return 'https://www.linkedin.com/countserv/count/share?callback=JSON_CALLBACK&format=jsonp&url='+ absUrl;
@@ -73,7 +73,7 @@ export class share {
 	static pinterest = {
 		icon : 'pinterest-p',
 		share (absUrl, text, via) {
-			return 'http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(absUrl) + '&description=' + text + '&media=' + via ;
+			return 'http://pinterest.com/pin/create/button/?url=' + absUrl + '&description=' + text + '&media=' + via ;
 		},
 		count (absUrl) {
 			return 'https://api.pinterest.com/v1/urls/count.json?callback=JSON_CALLBACK&url='+ absUrl;
@@ -85,7 +85,7 @@ export class share {
 	static xing = {
 		icon : 'xing',
 		share(absUrl) {
-			return 'https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=' + encodeURIComponent(absUrl);
+			return 'https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=' + absUrl;
 		}
 	};
 	static email = {
@@ -102,28 +102,28 @@ export class share {
 	@Input() is;
 	@Input() via;
 	@Input() text;
-	@Input() href;
+	@Input() query;
 
-	system = {};
+	system: any;
+	setting: string;
 
 	ngOnInit(@Attribute('height') height, @Attribute('width') width, @Attribute('name') name ){
-		this.name = name || 'Share';
 		this.system = share[this.is];
 		this.setting = this.windows(width, height);
 	}
 
 	post(){
-		var href = this.system.share(config.SHARE + '?type=' + encodeURI(this.href), encodeURI(this.text), this.via);
-		var neww = window.open(href, this.name, this.setting);
+		var href = this.system.share(SHARE + '?type=' + this.query, encodeURI(this.text), this.via);
+		var neww = window.open(href, 'Share', this.setting);
 		if (window.focus) neww.focus();
 	}
 
-	windows (width: Number = 600, height: Number = 300){
-		let setting = 'location=1,status=1,scrollbars=1';
-		setting += ',height=' + height;
-		setting += ',width=' + width;
-		setting += ',top=' + ((screen.height / 2) -  ( height / 2 ));
-		setting += ',left=' + ((screen.width / 2) - ( width / 2 ));
+	windows (width: number = 600, height: number = 300){
+		let setting: string = 'location=1,status=1,scrollbars=1';
+		setting += ',height=' + String(height);
+		setting += ',width=' + String(width);
+		setting += ',top=' + String( (screen.height / 2) -  (height / 2 ));
+		setting += ',left=' + String( (screen.width / 2) - ( width / 2 ));
 		return setting
 	}
 

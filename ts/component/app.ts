@@ -1,19 +1,21 @@
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, COMMON_PIPES} from '@angular/common';
-import {Component} from '@angular/core';
+import {ROUTER_DIRECTIVES, Router, OnActivate, RouteSegment } from '@angular/router';
 import {HTTP_PROVIDERS, Http} from '@angular/http';
+import {Component} from '@angular/core';
+import {SHARE, SUSCRIBE} from '../settings';
 import {list} from './list';
-import {parse} from 'query-string';
-import config  from '../lib.js';
+import {share} from './share';
+
 
 @Component({
 	selector: 'body',
 	providers: [HTTP_PROVIDERS],
 	directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, list],
-	templateUrl: config.SHARE + 'home.html',
+	templateUrl: SHARE + 'home.html',
 	pipes : [ COMMON_PIPES ]
 })
-export class app {
-	query = {};
+export class app implements OnActivate {
+	http: any;
 	suscriber = {
 		mail : '',
 		error : null,
@@ -22,22 +24,24 @@ export class app {
 	}
 
 	constructor( http: Http) {
-		let query = parse(window.location.search);
-		for (let i in query) {
-			if(/band|city|type|place/i.test(i) ){
-				this.suscriber.search = query[i];
+		this.http = http;
+	}
+
+	routerOnActivate(currSegment: RouteSegment) {
+		let things = [ 'band', 'city', 'type', 'place' ];
+		for (var i = things.length - 1; i >= 0; i--) {
+			let foo = currSegment.getParam(things[i]);
+			if(foo ){
+				this.suscriber.search = foo;
 			}
 		}
-
-		this.http = http;
-		this.http._defaultOptions.url = config.SUSCRIBE;
 	}
 
 	suscribe(){
 		if(this.suscriber.mail){
 			this.suscriber.error = null
 			this.http
-				.post(config.SUSCRIBE, JSON.stringify(this.suscriber) )
+				.post(SUSCRIBE, JSON.stringify(this.suscriber) )
 				.subscribe(res => {
 					let rt = res.json();
 					if(rt.error){

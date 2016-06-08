@@ -10,7 +10,7 @@ ul.unstyled.list.medium-100.small-100.tiny-100.large-90.xlarge-70( class=[ 'push
 				p.small( class=[  name.no + '-margin' ] ) {{concert.location}}
 		div.show-large.show-xlarge.show-medium( class=[ name.all + '-25', 'hide-' + name.all ] )
 			div( class=[ name.button + '-group' ] )
-				share(is="twitter", text='{{concert.summary}} en {{concert.location}}', via='gale_ph', query="{{query}}" class=[ name.button ])
-				share(is="facebook", text='{{concert.summary}} en {{concert.location}}', via='galeph', query="{{query}}" class=[ name.button ])
-				share(is="google", text='{{concert.summary}} en {{concert.location}}', via='galeph', query="{{query}}" class=[ name.button ])
-				share(is="email", text='{{concert.summary}} en {{concert.location}}', via='galeph', query="{{query}}" class=[ name.button ])
+				share(is="twitter", text='{{concert.summary}} en {{concert.location}}', via='gale_ph', href="{{concert.summary}}" class=[ name.button ])
+				share(is="facebook", text='{{concert.summary}} en {{concert.location}}', via='galeph', href="{{concert.summary}}" class=[ name.button ])
+				share(is="google", text='{{concert.summary}} en {{concert.location}}', via='galeph', href="{{concert.summary}}" class=[ name.button ])
+				share(is="email", text='{{concert.summary}} en {{concert.location}}', via='galeph', href="{{concert.summary}}" class=[ name.button ])

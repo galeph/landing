@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform, Injectable} from '@angular/core';
-import moment from 'moment';
-moment.locale(window.navigator.language);
+import * as moment from "moment";
+
 /**
  *
  *  <input [(model)]="query" type="text" />
@@ -14,7 +14,7 @@ moment.locale(window.navigator.language);
 	pure: false
 })
 @Injectable()
-export class time {
+export class time implements PipeTransform {
 	transform(date, args) {
 		return	moment(date).format(args);
 	}

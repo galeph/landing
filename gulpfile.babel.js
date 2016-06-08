@@ -5,20 +5,29 @@ import pug from 'gulp-pug';
 import sass from 'gulp-sass';
 import str from 'underscore.string';
 import gulpCopy from'gulp-copy';
-
+import buffer from 'vinyl-buffer';
 import browserify from 'browserify';
 import babelify from 'babelify';
 import collapse from 'bundle-collapser/plugin';
-
+import tsify from 'tsify';
 import del from 'del';
+
 const debug = false;
+const babel = true;
 const src = {
 	image : './image/*',
 	view : './src/view/*.pug',
 	style : './src/style/**/*.scss',
-	script : './src/script/**/*.js',
-	launcher : './src/script/app.js',
-	lib : './src/script/lib.js',
+	script : babel ? './src/script/**/*.js' : './ts/**/*.ts',
+	launcher : babel ? './src/script/main.js' : './ts/main.ts',
+	lib : [
+		'@angular/common',
+		'@angular/core',
+		'@angular/http',
+		'babel-polyfill',
+		'zone.js/dist/zone',
+		'moment/min/locales.js'
+	],
 	config : './src/style/config/_classnames.scss'
 };
 
@@ -40,56 +49,66 @@ gulp.task('view', () => {
 			locals: {
 				name : isClass,
 				uri : "http://localhost:9080/",
+				babel,
+				debug
 			}
 		}))
 		.pipe(gulp.dest(rootPath));
 });
 
-gulp.task('lib', () => browserify({
-		entries: src.lib,
-		debug,
-		insertGlobals : false
-	})
-	.transform(babelify, {
-		sourceMaps: debug,
-		sourceMapsAbsolute: false,
-		presets : ["es2015", "angular2" ], 
-		plugins : ["transform-object-assign"],
-		comments : debug,
-		compact : debug,
-		minified : !debug
-	})
-	.plugin(collapse)
-	.transform({
-		sourcemap: debug,
-		global : true
-	}, 'uglifyify')
-	.bundle()
-	.pipe(source('lib.js'))
-	.pipe(gulp.dest(rootPath)));
 
-gulp.task('launcher', () => browserify({
-		entries: src.launcher,
-		debug,
-		insertGlobals : false
-	})
-	.transform(babelify, {
-		sourceMaps: debug,
-		sourceMapsAbsolute: false,
-		presets : ["es2015", "angular2" ], 
-		plugins : ["transform-object-assign"],
-		comments : debug,
-		compact : debug,
-		minified : !debug
-	})
-	.transform({
-		sourcemap: debug,
-		global : true
-	}, 'uglifyify')
-	.plugin(collapse)
-	.bundle()
-	.pipe(source('app.js'))
-	.pipe(gulp.dest(rootPath)));
+if(babel){
+	gulp.task('lib', () => {
+		const b = browserify({ debug });
+		src.lib.forEach(lib => b.require(lib));
+
+		return b
+				.transform({
+				sourcemap: debug,
+				global : true
+			}, 'uglifyify')
+			.plugin(collapse)
+			.bundle()
+			.pipe(source('lib.js'))
+			.pipe(buffer())
+			.pipe(gulp.dest(rootPath))
+	});
+	gulp.task('launcher', () => browserify({
+			entries: src.launcher,
+			debug,
+			insertGlobals : false
+		})
+		.external(src.lib)
+		.transform(babelify, {
+			sourceMaps: debug,
+			sourceMapsAbsolute: false,
+			presets : ["es2015", "angular2" ], 
+			plugins : ["transform-object-assign"],
+			comments : debug,
+			compact : debug,
+			minified : !debug
+		})
+		.transform({
+			sourcemap: debug,
+			global : true
+		}, 'uglifyify')
+		.plugin(collapse)
+		.bundle()
+		.pipe(source('app.js'))
+		.pipe(gulp.dest(rootPath)));
+} else {
+	gulp.task('launcher', () => browserify({
+			basedir: '.',
+			debug: debug,
+			entries: [src.launcher],
+			cache: {},
+			packageCache: {}
+		})
+		.plugin(tsify)
+		.bundle()
+		.pipe(source('app.js'))
+		.pipe(gulp.dest(rootPath)));
+}
 
 gulp.task('style', () => gulp.src(src.style)
 		.pipe(sass({
@@ -105,7 +124,7 @@ gulp.task('watch', ['default'] , () => {
 	gulp.watch(src.image, ['image']);
 	gulp.watch(src.view, ['view']);
 	gulp.watch(src.style, ['style']);
-	gulp.watch(src.script, [ 'lib', 'launcher']);
+	gulp.watch(src.script, [ 'launcher']);
 });
-
-gulp.task('default', [ 'view', 'style', 'lib', 'launcher', 'image']);
+gulp.task('script', babel ? [  'lib', 'launcher'] : [ 'launcher']);
+gulp.task('default', [ 'view', 'style', 'script', 'image']);
