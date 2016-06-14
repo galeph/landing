@@ -208,11 +208,11 @@
                         padding-right: $form-append-width;
                     }
 
-                    & > [class^="fa-"],
-                    & > [class*=" fa-"] {
+                    & > [class^=fa-],
+                    & > [class*=" fa"] {
                         position: absolute;
                         right: 1em;
-                        top: .76em;
+                        top: .5em;
                         pointer-events: none;
                     }
                 }
@@ -230,11 +230,11 @@
                         padding-left: $form-append-width;
                     }
                     
-                    & > [class^="fa-"],
-                    & > [class*=" fa-"] {
+                    & > [class^=fa-],
+                    & > [class*=" fa"] {
                         position: absolute;
                         left: 1em;
-                        top: .76em;
+                        top: .5em;
                         pointer-events: none;
                     }
                 }
