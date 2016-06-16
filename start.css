@@ -6,6 +6,12 @@ h1.rotate { color: #fff; font-size: 2.1em; }
 
 .loading i { color: #e6e6e6; font-size: 3.5em; }
 
+.blur { -webkit-filter: blur(0.25em); -moz-filter: blur(0.25em); -o-filter: blur(0.25em); -ms-filter: blur(0.25em); filter: blur(0.25em); }
+
+.blur h1, .blur h2, .blur h3, .blur h4, .blur h5, .blur h6, .blur .small, .blur .no-margin { -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Chrome/Safari/Opera */ -khtml-user-select: none; /* Konqueror */ -moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently not supported by any browser */ }
+
+.blur share { display: none; }
+
 .ticket { border-radius: 0.5em; }
 
 .ticket input.gray { background: rgba(200, 200, 200, 0.4); border-color: rgba(200, 200, 200, 0.4); }
@@ -17,20 +23,20 @@ ul.list li { border-radius: 0.5em; background-color: #fff; color: #000; }
 ul.list li .all-65 { border-left: #000 dotted 0.2em; }
 
 @media screen and (min-width: 1261px) { .logo { height: 12em; }
-  h1.rotate { transform: rotate(-3deg); }
+  .rotate { transform: rotate(-3deg); }
   .ticket { transform: rotate(-3deg); background-color: transparent; background-size: 50% 100%; background-repeat: no-repeat; background-position: top left, top right; background-image: -webkit-radial-gradient(circle at -10% 50%, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em), -webkit-radial-gradient(circle at 110% 50%, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em); background-image: -webkit-radial-gradient(-10% 50% circle, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em), -webkit-radial-gradient(110% 50% circle, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em); background-image: radial-gradient(circle at -10% 50%, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em), radial-gradient(circle at 110% 50%, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em); }
   .ticket .ng-form { border-left: #000 dotted 0.2em; }
   input.gray { background: rgba(220, 220, 220, 0.4); border-color: rgba(220, 220, 220, 0.4); } }
 
 @media screen and (min-width: 961px) and (max-width: 1260px) { /* your css for large screens goes here ... */
-  h1.rotate { transform: rotate(-3deg); }
+  .rotate { transform: rotate(-3deg); }
   .ticket { transform: rotate(-3deg); background-color: transparent; background-size: 50% 100%; background-repeat: no-repeat; background-position: top left, top right; background-image: -webkit-radial-gradient(circle at -10% 50%, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em), -webkit-radial-gradient(circle at 110% 50%, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em); background-image: -webkit-radial-gradient(-10% 50% circle, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em), -webkit-radial-gradient(110% 50% circle, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em); background-image: radial-gradient(circle at -10% 50%, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em), radial-gradient(circle at 110% 50%, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em); }
   .ticket .ng-form { border-left: #000 dotted 0.2em; }
   .logo { height: 12em; }
   input.gray { background: rgba(220, 220, 220, 0.4); border-color: rgba(220, 220, 220, 0.4); } }
 
 @media screen and (min-width: 641px) and (max-width: 960px) { /* your css for medium screens goes here ... */
-  h1.rotate { transform: rotate(-3deg); }
+  .rotate { transform: rotate(-3deg); }
   .ticket { transform: rotate(-3deg); background-color: transparent; background-size: 50% 100%; background-repeat: no-repeat; background-position: top left, top right; background-image: -webkit-radial-gradient(circle at -10% 50%, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em), -webkit-radial-gradient(circle at 110% 50%, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em); background-image: -webkit-radial-gradient(-10% 50% circle, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em), -webkit-radial-gradient(110% 50% circle, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em); background-image: radial-gradient(circle at -10% 50%, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em), radial-gradient(circle at 110% 50%, rgba(255, 255, 225, 0) 4.5em, #fccd83 4em); }
   .ticket .ng-form { border-left: #000 dotted 0.2em; }
   .logo { height: 12em; }
