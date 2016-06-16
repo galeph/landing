@@ -1,3 +1,4 @@
+import './modernizr';
 import 'zone.js';
 import 'babel-polyfill';
 import {provide, enableProdMode} from '@angular/core';

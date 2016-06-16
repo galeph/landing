@@ -14,6 +14,7 @@ import del from 'del';
 
 const debug = false;
 const babel = true;
+
 const src = {
 	image : './image/*',
 	view : './src/view/*.pug',

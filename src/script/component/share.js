@@ -8,7 +8,7 @@ import config  from '../lib.js';
  * <share is='twitter' text='Share this text' via='@alejonext' || optional -> width=300 height=600 name='hello' />
  */
 @Component({
-	selector: 'share',
+	selector: '.share',
 	viewProviders: [HTTP_PROVIDERS],
 	templateUrl: config.SHARE + 'share.html',
 	directives: [ CORE_DIRECTIVES ],
