@@ -21,7 +21,7 @@
 					height : 12em;
 				}
 
-				h1.rotate {
+				.rotate {
 					transform : rotate(-3deg);
 				}
 				
@@ -56,9 +56,11 @@
 				
 				/* your css for #{$class-name} screens goes here ... */
 				@if $minimum-width > 630 {
-					h1.rotate {
+
+					.rotate {
 						transform : rotate(-3deg);
 					}
+
 					.ticket {
 						transform : rotate(-3deg);
 						background-color: transparent;
@@ -81,6 +83,7 @@
 					.logo{
 						height : 12em;
 					}
+
 					input.gray{
 						background: $color-bac3;
 						border-color: $color-bac3;
@@ -96,8 +99,6 @@
 					}
 					
 				}
-
-
 			}
 		}
 

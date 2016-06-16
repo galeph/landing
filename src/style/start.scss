@@ -30,6 +30,7 @@ html {
 	background-position: center;
 	background-attachment: fixed;
 }
+
 h1.rotate {
 	color : $white;
 	font-size :2.1em;
@@ -46,12 +47,33 @@ h1.rotate {
 	}
 }
 
+.blur {
+	-webkit-filter: blur($border-radius / 2);
+	-moz-filter: blur($border-radius / 2);
+	-o-filter: blur($border-radius / 2);
+	-ms-filter: blur($border-radius / 2);
+	filter: blur($border-radius / 2);
+	h1, h2, h3, h4, h5, h6, .small, .no-margin {
+		-webkit-touch-callout: none; /* iOS Safari */
+		-webkit-user-select: none;   /* Chrome/Safari/Opera */
+		-khtml-user-select: none;    /* Konqueror */
+		-moz-user-select: none;      /* Firefox */
+		-ms-user-select: none;       /* Internet Explorer/Edge */
+		user-select: none;           /* Non-prefixed version, currently
+		                                  not supported by any browser */
+	}
+	share {
+		display: none;
+	}
+}
+
 .ticket {
 	border-radius: $border-radius;	
 	input.gray{
 		background: rgba(200, 200, 200, 0.4);
 		border-color: rgba(200, 200, 200, 0.4);
 	}
+
 	.fa.gray {
 		color: rgba(100, 100, 100, 0.3);
 	}

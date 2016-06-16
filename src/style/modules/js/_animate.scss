@@ -13,4 +13,27 @@
     &.fast {
         animation-duration: 0.2s;
     }
+
 }
+
+.transition {
+	transition-property: all;
+	transition: 1s filter linear;
+	-webkit-transition: 1s -webkit-filter linear;
+	-moz-transition: 1s -moz-filter linear;
+	-ms-transition: 1s -ms-filter linear;
+	-o-transition: 1s -o-filter linear;
+
+	&.slow {
+        transition-duration: 1s;
+    }
+
+    &.medium {
+        transition-duration: 0.5s;
+    }
+
+    &.fast {
+        transition-duration: 0.2s;
+    }   
+}
+

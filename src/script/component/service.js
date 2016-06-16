@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import {Http, Headers} from "@angular/http";
 import config  from '../lib.js';
 
 @Injectable()
 export class lives {
 	events = [];
+	
 	constructor( http: Http) {
 		this.http = http;
 		this.http._defaultOptions.url = config.CAL;
