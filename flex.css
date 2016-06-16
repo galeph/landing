@@ -2853,3 +2853,5 @@ dl.inline dd { margin: .5em 0 .5em 200px; }
 .transition.medium { transition-duration: 0.5s; }
 
 .transition.fast { transition-duration: 0.2s; }
+
+.transition-all { transition-property: all; }
